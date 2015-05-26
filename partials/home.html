@@ -1,0 +1,75 @@
+	<nav class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span> 
+						</button>
+						<a class="navbar-brand" href="#">Car Manager</a>
+						</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#home">Home</a></li>
+							<li><a href="#Phases"> Phase </a></li>
+							<li><a href="#ViewOrders"> View Details </a></li>
+						</ul>
+						
+					</div>
+					</div>
+				</nav>
+				
+			
+				<div class="row">
+					<div class="col-md-3 addCar" id="divAddCar">
+						<br/>
+						
+						<input ng-model="carName" type="text" placeholder="Enter car name" class="inputBox" />
+						<Input type="button" value="Add Car" ng-click="addCar()" class="inputBtn"/><br/><br/>
+						<div ng-show="enterCar">
+							<img src="images/blankCar.png"/>
+						</div>
+
+						<div id="display" ng-repeat="name in  cars.carNames"><br/>
+							{{name.name}}
+							<button ng-click="form1($index)">{{name.phase}}</button><br/></div>
+							<br/>
+						</div>
+					
+					<div class="col-md-6 middle">
+						
+						<div id="hello"></div>
+
+						<div class="carImage"   ng-repeat="car in cars.carInfos">
+						<img  src="{{car.image}}">
+						<div id="info">
+						<b>Name</b> : {{car.name}}<br/>
+						<b>Mileage</b> : {{car.mileage}}<br/>
+						<b>seats</b> : {{car.seats}}<br/>
+						<b>Description</b> : {{car.description}}<br/>
+						</div>
+						</div>
+					</div>
+					<div class="col-md-3 search">
+						<br/>
+						<input type="text" ng-model="searchInput" placeholder="Search" class="inputBox" ng-change="list()"/>
+						<button class="inputBtn" ng-click="searchCar()">Search</button>
+						<div id="searchResult" ng-model="searchResult">
+						<div ng-show="listVar" ng-repeat="car in cars.car2|filter:searchFilter">{{car}}</div>
+						<div ng-show="searchVar">
+						<img src="{{carInfo.image}}"/>
+						<b>Name</b> : {{carInfo.name}}<br/>
+						<b>Mileage</b> : {{carInfo.mileage}}<br/>
+
+						<b>seats</b> : {{carInfo.seats}}<br/>
+						<b>Description</b> : {{carInfo.description}}<br/>
+						</div>
+						<div ng-show="notFound">
+							<img src="images/notFound.png"/>
+						</div>
+					</div>
+					</div>
+				
+				
+					</div>
+	

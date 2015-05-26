@@ -1,0 +1,69 @@
+<nav class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span> 
+						</button>
+						<a class="navbar-brand" href="#">Car Manager</a>
+						</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li ><a href="#home">Home</a></li>
+							<li><a href="#Phases"> Phase </a></li>
+							<li  class="active"><a href="#ViewOrders"> View Details </a></li>
+						</ul>
+						
+					</div>
+					</div>
+				</nav>
+
+<div class="container jumbotron border">
+<center>
+Choose car 
+<select ng-model="car">
+		<option ng-repeat="name in cars.carNames">{{name.name}}</option>
+</select>
+<br/><br/>
+Choose phase 
+<select ng-model="phase">
+		<option>Phase1</option>
+		<option>Phase2</option>
+		<option>Phase3</option>
+		<option>Phase4</option>
+</select>
+<br/>
+<br/>
+<input type="button" value="Show Details" ng-click="viewDetails()" /><br/>
+<div ng-show="phaseVar1">
+						<img src="{{carInfo.image}}"/>
+						<b>Name</b> : {{carInfo.name}}<br/>
+						<b>Mileage</b> : {{carInfo.mileage}}<br/>
+
+						<b>seats</b> : {{carInfo.seats}}<br/>
+						<b>Description</b> : {{carInfo.description}}<br/>
+</div>
+<div ng-show="phaseVar2">
+						<b>Name</b> : {{carInfo.name}}<br/>
+						<b>Colour</b> : {{carInfo.colour}}<br/>
+
+						<b>Weight</b> : {{carInfo.wheels}}<br/>
+						<b>power</b> : {{carInfo.capacity}}<br/>
+</div>
+
+
+<div ng-show="phaseVar3">
+						<b>Name</b> : {{carInfo.name}}<br/>
+						<b>Body Type</b> : {{carInfo.bodyType}}<br/>
+
+						<b>Fuel Type</b> : {{carInfo.fuelType}}<br/>
+						<b>Fuel Consumption</b> : {{carInfo.fuelConsumption}}<br/>
+</div>
+
+<!--<div ng-model="a">{{a}}</div>
+<div ng-model="details" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>-->
+
+<div ng-show="phaseVar4" id="high" class="col-md-8" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+</div>

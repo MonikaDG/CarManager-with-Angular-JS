@@ -1,0 +1,237 @@
+<script>
+var fileInput = document.getElementById('fileInput');
+		  
+
+		fileInput.addEventListener('change', function(e) {
+			var file = fileInput.files[0];
+			var imageType = /image.*/;
+
+			if (file.type.match(imageType)) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					
+					var img = new Image();
+					img.src = reader.result;
+					localStorage.setItem("sharu",img.src);
+
+					
+				}
+
+				reader.readAsDataURL(file);	
+			} 
+		});
+</script>
+<nav class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span> 
+						</button>
+						<a class="navbar-brand" href="#">Car Manager</a>
+						</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li ><a href="#home">Home</a></li>
+							<li class="active"><a href="#Phases"> Phase </a></li>
+							<li ><a href="#ViewOrders"> View Details </a></li>
+						</ul>
+						
+					</div>
+					</div>
+				</nav>
+			<div class="container jumbotron border">
+		
+				
+					<div class="row" ng-init="load()">
+							<div class="col-md-4">
+									
+
+									<button ng-style="myStyle1" ng-mousedown="myStyle1={'width':'120px'}" ng-mouseup="myStyle1={'width':'100px'}" ng-class="{'btnColor':val1==true}"  ng-click="showForm1()">Phase 1</button><br/><br/>
+									<button ng-style="myStyle2" ng-mousedown="myStyle2={'width':'120px'}" ng-mouseup="myStyle2={'width':'100px'}" ng-class="{'btnColor':val2==true}" ng-click="showForm2()">Phase 2</button><br/><br/>
+									<button ng-style="myStyle3" ng-mousedown="myStyle3={'width':'120px'}" ng-mouseup="myStyle3={'width':'100px'}" ng-class="{'btnColor':val3==true}" ng-click="showForm3()">Phase 3</button><br/><br/>
+									<button ng-style="myStyle4" ng-mousedown="myStyle4={'width':'120px'}" ng-mouseup="myStyle4={'width':'100px'}" ng-class="{'btnColor':val4==true}" ng-click="showForm4()">Phase 4</button><br/><br/>
+							</div>
+							<div class="col-md-8" ng-show="myVar1">
+							<img style="float:right;width:30px;height:auto;" src="images/close.png" ng-click="close()"/>
+
+									<div class="Header">Form 1</div><br/>
+
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="name" class="form-control">
+									</div>
+									<div>
+											<label> Car Name</label>
+									</div>
+								</div>
+						
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="file" id="fileInput" >
+									</div>
+									<div>
+											<label> </label>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="mileage" class="form-control">
+											<span ng-show="mileageVar">Please enter mileage!</span>
+									</div>
+									<div>
+											<label> Mileage</label>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="seats" class="form-control">
+											<span ng-show="seatsVar">Please enter Number of seats!</span>
+
+									</div>
+									<div>
+											<label> Seats</label>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="description" class="form-control">
+											<span ng-show="descVar">Please enter Description of car!</span>
+
+									</div>
+									<div>
+											<label> Description</label>
+									</div>
+								</div>
+								<center>
+										<button class="btn-success btn-lg" ng-click="saveForm1($index)">Save Car Info</button>
+								</center>
+							</div>
+
+							<div class="col-md-8" ng-show="myVar2">
+							<img style="float:right;width:30px;height:auto;" src="images/close.png" ng-click="close()"/>
+
+							<div class="Header">Form 2</div><br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="name" class="form-control">
+
+									</div>
+									<div>
+											<label> Car Name</label>
+									</div>
+								</div>
+						
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="wheels" class="form-control">
+											<span ng-show="weightVar">Please enter Weight of the car!</span>
+									</div>
+									<div>
+											<label> Weight</label>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="colour" class="form-control">
+											<span ng-show="colourVar">Please enter Colour!</span>
+									</div>
+									<div>
+											<label> colour</label>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="capacity" class="form-control">
+											<span ng-show="powerVar">Please enter Power in hp!</span>
+									</div>
+									<div>
+											<label> Power</label>
+									</div>
+								</div>
+								<center>
+										<button class="btn-success btn-lg" ng-click="saveForm2()">Save Car Info</button>
+								</center>
+							</div>
+
+
+							<div class="col-md-8" ng-show="myVar3">
+							<img style="float:right;width:30px;height:auto;" src="images/close.png" ng-click="close()"/>
+
+							<div class="Header">Form 3</div><br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="name" class="form-control">
+									</div>
+									<div>
+											<label> Car Name</label>
+									</div>
+								</div>
+						
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="bodyType" class="form-control">
+											<span ng-show="bodyVar">Please enter body type of car!</span>
+									</div>
+									<div>
+											<label> Body type</label>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="fuelType" class="form-control">
+											<span ng-show="fuelVar">Please enter type of fuel used by car!</span>
+									</div>
+									<div>
+											<label> Fuel Type</label>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-md-6">
+											<input type="text" ng-model="fuelConsumption" class="form-control">
+											<span ng-show="consumptionVar">Please enter fuel consumption!</span>
+									</div>
+									<div>
+											<label> Fuel Consumption</label>
+									</div>
+								</div>
+								<center>
+										<button class="btn-success btn-lg" ng-click="saveForm3()">Save Car Info</button>
+								</center>
+							</div>
+
+
+							<div class="col-md-8" ng-show="myVar4">
+							<img style="float:right;width:30px;height:auto;" src="images/close.png" ng-click="close()"/>
+
+							<div class="Header">Form 4</div><br/><br/>
+								Jan<input type="text" ng-model="jan"/> &nbsp; &nbsp; Feb <input type="text" ng-model="feb"/><br/>
+								Mar<input type="text" ng-model="mar"/> &nbsp; &nbsp; Apr <input type="text" ng-model="apr"/><br/>
+								May<input type="text" ng-model="may"/> &nbsp; &nbsp; Jun <input type="text" ng-model="jun"/><br/>
+								Jul<input type="text" ng-model="jul"/> &nbsp; &nbsp; Aug <input type="text" ng-model="aug"/><br/>
+								Sep<input type="text" ng-model="sep"/> &nbsp; &nbsp; Oct <input type="text" ng-model="oct"/><br/>
+								Nov<input type="text" ng-model="nov"/> &nbsp; &nbsp; Dec <input type="text" ng-model="dec"/><br/>
+								<center>
+										<button class="btn-success btn-lg" ng-click="saveForm4()">Save Car Info</button>
+								</center>
+							</div>
+
+						</div>
+					</div>
+
+
+
+	
+					
